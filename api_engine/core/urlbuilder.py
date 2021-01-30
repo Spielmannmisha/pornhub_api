@@ -21,7 +21,7 @@ class WebUrlBuilder:
     def search(
         self,
         q = '',
-        thumbsize = 'small',
+        thumbsize = 'large',
         category = '',
         page = 1,
         ordering = '',
@@ -45,13 +45,15 @@ class WebUrlBuilder:
             params['period'] = period
 
         data = urllib.parse.urlencode(params)
-        data = data.encode('ascii')
-        urlreq = Request(url, data)
+        #data = data.encode('ascii')
+        #urlreq = Request(url, data)
 
-        content = urlopen(urlreq).read()
+        final_url = url + '?' + data
+
+        content = urlopen(final_url).read()
         output = json.loads(content)
 
-        return data
+        return output
 
 
     def stars(self):
@@ -71,12 +73,6 @@ class WebUrlBuilder:
         url = self.make_url('/vide_by_id')
         return
 
-
-
-"""
-with open('test.txt', 'w', encoding= 'utf-8') as outfile:
-    json.dump(data, outfile, ensure_ascii=False, indent = 4)
-"""
 
 test = WebUrlBuilder()
 
