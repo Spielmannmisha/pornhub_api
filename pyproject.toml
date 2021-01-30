@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pornhub_api"
+version = "0.1.0"
+description = ""
+authors = ["Misha Bystrov <drudkhmisha@gmail.com>"]
+packages = [
+    { include = "api_engine" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.8.4"
+
+[tool.poetry.scripts]
+test-script = "api_engine.scripts.test_script:main"
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
