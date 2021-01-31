@@ -117,9 +117,3 @@ class WebUrlBuilder:
         data = self.__make_request(url, params)
 
         return data
-
-test = WebUrlBuilder()
-
-tags = ('submissive', 'domination', 'ass fuck', 'fetish')
-
-print(test.search(q = 'Agent', page = 1, category = 'squirt', tags = tags))
