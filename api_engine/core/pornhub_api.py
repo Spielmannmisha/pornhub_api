@@ -11,7 +11,7 @@ class Pornhub_api:
         """Concate base url with string from specific method"""
         return f"{self.URL}{path}"
 
-    def __make_request(self, url, params=None):
+    def make_request(self, url, params=None):
         """Create full url with parameters
 
         Keyword arguments:
@@ -75,7 +75,7 @@ class Pornhub_api:
         if period is not None and category is not None:
             params['period'] = period
 
-        data = self.__make_request(url, params)
+        data = self.make_request(url, params)
 
         return data
 
@@ -84,7 +84,7 @@ class Pornhub_api:
 
         url = self.make_url('/stars')
 
-        data = self.__make_request(url)
+        data = self.make_request(url)
 
         return data
 
@@ -93,7 +93,7 @@ class Pornhub_api:
 
         url = self.make_url('/stars_detailed')
 
-        data = self.__make_request(url)
+        data = self.make_request(url)
 
         return data
 
@@ -104,7 +104,7 @@ class Pornhub_api:
 
         params = {'id': id}
 
-        data = self.__make_request(url, params)
+        data = self.make_request(url, params)
 
         return data
 
@@ -115,7 +115,7 @@ class Pornhub_api:
 
         params = {'id': id}
 
-        data = self.__make_request(url, params)
+        data = self.make_request(url, params)
 
         return data
 
@@ -124,7 +124,7 @@ class Pornhub_api:
 
         url = self.make_url('/categories')
 
-        data = self.__make_request(url)
+        data = self.make_request(url)
 
         return data
 
@@ -135,6 +135,6 @@ class Pornhub_api:
         if tags is not None:
             params['tags'] = ','.join(tags)
 
-        data = self.__make_request(url, params)
+        data = self.make_request(url, params)
 
         return data
