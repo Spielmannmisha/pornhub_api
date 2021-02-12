@@ -33,7 +33,7 @@ class TestGetData(unittest.TestCase):
         mock_search.return_value = mockfunc.urlopen.return_value
 
         resp1 = Pornhub_api()
-        resp = resp1.search()
+        resp = resp1.search('sex')
 
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
