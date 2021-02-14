@@ -37,9 +37,11 @@ No tests available yet
 ## Roadmap
 
 ```
-HTTP errors handler - 20.02.2021
+HTTP errors handler - 20.02.2021 - Postoned
 
-Automated tests - 25.02.2021
+Automated tests - 25.02.2021 - Done
+
+Publishing and release - 28.02.2021
 
 to be continued
 ```
