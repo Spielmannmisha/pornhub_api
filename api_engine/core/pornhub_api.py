@@ -54,7 +54,7 @@ class Pornhub_api:
             rating. Defailt is None.
         phrase -- [List]. Default is None.
         tags -- [List]. Default is None.
-        period -- [string]. Default is NOne
+        period -- [string]. Default is None
 
         Return:
         json as searching result with parameters

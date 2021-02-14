@@ -15,7 +15,7 @@ flake8 = "^3.8.4"
 
 [tool.poetry.scripts]
 phb_api = "api_engine.core.pornhub_api:main"
-run_tests = "api_engine.tests.tests:main"
+run_tests = "api_engine.tests.search_unit_test:main"
 
 
 [build-system]
