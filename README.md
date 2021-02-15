@@ -20,7 +20,7 @@ pip install "api-for-pornhub"
 In case if you want to import all functions:
 
 ```
-import "import Pornhub_api"
+import "Pornhub_api"
 ```
 
 Or in case if you want to use specific functions like search and tags:
