@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from typing import List
 from urllib.request import urlopen
 import urllib.parse

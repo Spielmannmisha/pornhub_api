@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pornhub_api"
+name = "api_for_pornhub"
 version = "0.1.0"
 description = "Simple lib to work with pornhub API"
 authors = ["Misha Bystrov <drudkhmisha@gmail.com>"]
@@ -15,7 +15,7 @@ flake8 = "^3.8.4"
 
 [tool.poetry.scripts]
 phb_api = "api_engine.core.pornhub_api:main"
-run_tests = "api_engine.tests.unit_test:main"
+run-tests = "api_engine.tests.unit_test:main"
 
 
 [build-system]

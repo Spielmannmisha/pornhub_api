@@ -14,19 +14,19 @@ This library doesn't require addiotional libraries except one's that provide cpy
 Install to your environment as shown above:
 
 ```
-pip install "???"
+pip install "api-for-pornhub"
 ```
 
 In case if you want to import all functions:
 
 ```
-import "???"
+import "import Pornhub_api"
 ```
 
 Or in case if you want to use specific functions like search and tags:
 
 ```
-from "???" import search, tags
+from "Pornhub_api" import search, tags
 ```
 
 
