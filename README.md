@@ -1,4 +1,4 @@
-![CI](https://github.com/Spielmannmisha/pornhub_api/workflows/CI/badge.svg?branch=main&event=push)
+![CI](https://github.com/Spielmannmisha/pornhub_api/workflows/UnitTest/badge.svg?branch=main&event=push)
 
 # pornhub_api
 Simple lib to work with pornhub api
