@@ -38,12 +38,7 @@ jobs:
         run: |
           pip install poetry
           git clone https://github.com/Spielmannmisha/pornhub_api.git
-          
-      - name: Check distributions
-        run: |
-          ls -la dist
-          
-          
+               
       - name: Publish to PyPI
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
