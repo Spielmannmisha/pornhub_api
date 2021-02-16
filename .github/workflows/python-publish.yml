@@ -23,7 +23,9 @@ jobs:
           python-version: 3.8
 
       - name: Install Poetry
-        uses: dschep/install-poetry-action@v1.2
+        run: |
+          curl -O -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py
+          python get-poetry.py --preview -y
   
   Release:
     needs: [Linux]
