@@ -26,6 +26,12 @@ jobs:
         run: |
           curl -O -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py
           python get-poetry.py --preview -y
+          
+      - name: Build distributions
+        run: |
+          source $HOME/.poetry/env
+          poetry build -vvv
+          
   
   Release:
     needs: [Linux]
