@@ -33,11 +33,7 @@ jobs:
         id: tag
         run: |
           echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
-      - name: Download distribution artifact
-        uses: actions/download-artifact@master
-        with:
-          name: pendulum-dist
-          path: dist
+
       - name: Install and set up PornhubApi
         run: |
           pip install poetry
