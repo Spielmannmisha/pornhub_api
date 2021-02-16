@@ -44,6 +44,11 @@ jobs:
         id: tag
         run: |
           echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
+          
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
 
       - name: Install and set up Poetry
         run: |
