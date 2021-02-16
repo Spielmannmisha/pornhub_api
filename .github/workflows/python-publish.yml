@@ -68,13 +68,13 @@ jobs:
           poetry build
           poetry publish
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        with:
-          tag_name: ${{ steps.tag.outputs.tag }}
-          release_name: ${{ steps.tag.outputs.tag }}
-          draft: false
-          prerelease: false
+#      - name: Create Release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+#        with:
+#          tag_name: ${{ steps.tag.outputs.tag }}
+#          release_name: ${{ steps.tag.outputs.tag }}
+#          draft: false
+#          prerelease: false
