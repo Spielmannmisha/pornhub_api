@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "api_for_pornhub"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simple lib to work with pornhub API"
 authors = ["Misha Bystrov <drudkhmisha@gmail.com>"]
 packages = [
