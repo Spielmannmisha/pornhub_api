@@ -22,19 +22,19 @@ pip install "api-for-pornhub"
 In case if you want to import all functions:
 
 ```
-import "Pornhub_api"
+import "api_for_pornhub"
 ```
 
 Or in case if you want to use specific functions like search and tags:
 
 ```
-from "Pornhub_api" import search, tags
+from "api_for_pornhub" import "Api_for_pornhub"
 ```
 
 
 ## Running the tests
 
-No tests available yet
+Description will be added later
 
 ## Roadmap
 
@@ -43,7 +43,7 @@ HTTP errors handler - 20.02.2021 - Postoned
 
 Automated tests - 25.02.2021 - Done
 
-Publishing and release - 28.02.2021
+Publishing and release - 28.02.2021 - Done
 
 to be continued
 ```
