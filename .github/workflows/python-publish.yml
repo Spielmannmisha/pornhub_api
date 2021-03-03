@@ -56,9 +56,9 @@ jobs:
           python get-poetry.py --preview -y
           
           
-      - name: Install and set up PornhubApi
+      - name: Install and set up api_for_pornhub
         run: |
-          git clone https://github.com/Spielmannmisha/pornhub_api.git
+          git clone https://github.com/Spielmannmisha/api_for_pornhub.git
                
       - name: Publish to PyPI
         env:
