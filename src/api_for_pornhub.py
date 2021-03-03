@@ -20,7 +20,7 @@ class Api_for_pornhub:
         return f"{self.URL}{path}"
 
     def make_request(self, url, params=None):
-        """[summary]
+        """this function makes api request to pornhub
 
         Args:
             url (String): unique url for each method
