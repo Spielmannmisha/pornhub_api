@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "api_for_pornhub"
-version = "0.1.2"
+version = "0.1.3"
 description = "Simple lib to work with pornhub API"
 authors = ["Misha Bystrov <drudkhmisha@gmail.com>"]
 packages = [
-    { include = "src" },
+    { include = "api_for_pornhub", from = "src" },
 ]
 
 [tool.poetry.dependencies]
@@ -16,7 +16,7 @@ jsonschema = "^3.2.0"
 pytest = "^6.2.2"
 
 [tool.poetry.scripts]
-phb_api = "src.api_for_pornhub:main"
+phb = "src.api_for_pornhub:main"
 run-tests = "src.tests.unit_test:main"
 
 
