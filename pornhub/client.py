@@ -1,12 +1,10 @@
-#!/usr/bin/env python3
-
 from typing import List
 from urllib.request import urlopen
 import urllib.parse
 import json
 
 
-class Api_for_pornhub:
+class PornhubApi:
     """This class creates functions that interact with pornhub.com
 
     Returns:
