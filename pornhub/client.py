@@ -38,7 +38,7 @@ class PornhubApi:
 
     def search(
         self,
-        q='',
+        query='',
         thumbsize='small',
         category=None,
         page=1,
@@ -50,7 +50,7 @@ class PornhubApi:
         """Start searching with parameters
 
         Args:
-            q (str, optional): [description]. Defaults to ''.
+            query (str, optional): [description]. Defaults to ''.
             thumbsize (str, optional): [description]. Defaults to 'small'.
             category ([type], optional): [description]. Defaults to None.
             page (int, optional): [description]. Defaults to 1.
@@ -61,10 +61,62 @@ class PornhubApi:
 
         Returns:
             json: returns json as searching result with parameters
+
+        Example:
+            phb_api = phb.PornhubApi()
+            result = phb_api.search(query='straight')
+            # result ->>
+                {
+                    "videos": [
+                        {
+                        "duration": "11:50",
+                        "views": 587,
+                        "video_id": "ph5fa1aad36d297",
+                        "rating": "100",
+                        "ratings": 2,
+                        "title": "Fill my mouth with your cum ",
+                        "url": "https://www.pornhub.com/view_video.php?viewkey=ph5fa1aad36d297",
+                        "default_thumb": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)12.jpg",
+                        "thumb": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)7.jpg",
+                        "publish_date": "2021-03-15 18:07:03",
+                        "thumbs": [
+                            {
+                            "size": "320x240",
+                            "width": "320",
+                            "height": "240",
+                            "src": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)1.jpg"
+                            },
+                            {
+                            "size": "320x240",
+                            "width": "320",
+                            "height": "240",
+                            "src": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)2.jpg"
+                            }
+                        ],
+                        "tags": [
+                            {
+                            "tag_name": "cum swallow"
+                            },
+                            {
+                            "tag_name": "swallow"
+                            }
+                        ],
+                        "pornstars": [],
+                        "categories": [
+                            {
+                            "category": "amateur"
+                            },
+                            {
+                            "category": "big-tits"
+                            }
+                        ],
+                        "segment": "straight"
+                        }
+                }
         """
 
         url = self.make_url('/search')
-        params = {'search': q, 'page': page, 'thumbsize': thumbsize}
+        params = {'search': query, 'page': page, 'thumbsize': thumbsize}
         if category is not None:
             params['category'] = category
         if ordering is not None:
@@ -79,44 +131,259 @@ class PornhubApi:
         return data
 
     def stars(self):
-        """Get short pornstars list"""
+        """Get short pornstars list
+
+        Returns:
+            json: returns json as searching result with parameters
+
+        Example:
+            #
+            phb_api = phb.PornhubApi()
+            result = phb_api.stars()
+            # result ->>
+            {
+                "stars": [
+                    {
+                    "star": {
+                        "star_name": "033120 mpp2"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": "050221mpp"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": "051220 mpp"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": "070820mpp"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": "070920mpp"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": "2 Pretty 4 Porn"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": "29EXP"
+                    }
+                }
+            }
+        """
 
         url = self.make_url('/stars')
         data = self.make_request(url)
         return data
 
     def stars_detailed(self):
-        """Get detailed pornstars list"""
+        """Get detailed pornstars list
+
+        Returns:
+            json: returns json as searching result with parameters
+
+        Example:
+            phb_api = phb.PornhubApi()
+            result = phb_api.stars_detailed()
+            # result ->>
+            {
+                "stars": [
+                    {
+                    "star": {
+                        "star_name": " Melisa Wide",
+                        "star_thumb": "https://di.phncdn.com/pics/pornstars/default/(m=lciuhScOb_c)(mh=MIYb3JZmqOmG07hE)female.jpg",
+                        "star_url": "https://www.pornhub.com/pornstar/videos_overview?pornstar=melisa-wide",
+                        "gender": "female",
+                        "videos_count_all": "0"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": ", Arietta Adams",
+                        "star_thumb": "https://di.phncdn.com/pics/pornstars/default/(m=lciuhScOb_c)(mh=MIYb3JZmqOmG07hE)female.jpg",
+                        "star_url": "https://www.pornhub.com/pornstar/videos_overview?pornstar=%2C-arietta-adams",
+                        "gender": "female",
+                        "videos_count_all": "0"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": "033120 mpp2",
+                        "star_thumb": "https://di.phncdn.com/pics/pornstars/default/(m=lciuhScOb_c)(mh=MIYb3JZmqOmG07hE)female.jpg",
+                        "star_url": "https://www.pornhub.com/pornstar/videos_overview?pornstar=033120-mpp2-changed",
+                        "gender": "female",
+                        "videos_count_all": "1"
+                    }
+                    },
+                    {
+                    "star": {
+                        "star_name": "050221mpp",
+                        "star_thumb": "https://di.phncdn.com/pics/pornstars/default/(m=lciuhScOb_c)(mh=0gAw-L65LP18RaWB)male.jpg",
+                        "star_url": "https://www.pornhub.com/pornstar/videos_overview?pornstar=050221mpp",
+                        "gender": "male",
+                        "videos_count_all": "0"
+                    }
+                    }
+            }
+        """
 
         url = self.make_url('/stars_detailed')
         data = self.make_request(url)
         return data
 
     def video_by_id(self, id):
-        """Get video id"""
+        """Get video id
 
-        url = self.make_url('/video_by_id')
+        Returns:
+            json: returns json as searching result with parameters
+
+        Example:
+            phb_api = phb.PornhubApi()
+            result = phb_api.vide_by_id('ph5fa1aad36d297')
+            # result ->>
+            {
+                "video": {
+                    "duration": "11:50",
+                    "views": 71,
+                    "video_id": "ph5fa1aad36d297",
+                    "rating": "100",
+                    "ratings": 5,
+                    "title": "Fill my mouth with your cum ",
+                    "url": "https://www.pornhub.com/view_video.php?viewkey=ph5fa1aad36d297",
+                    "default_thumb": "https://ei.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)12.jpg",
+                    "thumb": "https://ei.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)7.jpg",
+                    "publish_date": "2021-03-15 18:07:03",
+                    "thumbs": [
+                    {
+                        "size": "320x240",
+                        "width": "320",
+                        "height": "240",
+                        "src": "https://ei.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)1.jpg"
+                    }
+                    ],
+                    "tags": [
+                    {
+                        "tag_name": "cum swallow"
+                    },
+                    {
+                        "tag_name": "swallow"
+                    }
+                    ],
+                    "pornstars": [],
+                    "categories": [
+                    {
+                        "category": "amateur"
+                    },
+                    {
+                        "category": "big-tits"
+                    }
+                    ],
+                    "segment": "straight"
+                }
+            }
+        """
+
+        url = self.make_url('/video_by_id?id=')
         params = {'id': id}
         data = self.make_request(url, params)
         return data
 
     def is_video_active(self, id):
-        """Check if video is active"""
+        """Check if video is active
 
-        url = self.make_url('/is_video_active')
+        Returns:
+            json: returns json as searching result with parameters
+
+        Example:
+            phb_api = phb.PornhubApi()
+            result = phb_api.is_video_active('ph5fa1aad36d297')
+            # result ->>
+            {
+                "active": {
+                    "video_id": "ph5fa1aad36d297",
+                    "is_active": "1"
+                }
+            }
+        """
+
+        url = self.make_url('/is_video_active?id=')
         params = {'id': id}
         data = self.make_request(url, params)
         return data
 
     def categories(self):
-        """Get all possible categories"""
+        """Get all possible categories
+
+        Returns:
+            json: returns json as searching result with parameters
+
+        Example:
+            phb_api = phb.PornhubApi()
+            result = phb_api.categories()
+            # result ->>
+            {
+                "categories": [
+                    {
+                    "id": "622",
+                    "category": "180-1"
+                    },
+                    {
+                    "id": "632",
+                    "category": "2d"
+                    },
+                    {
+                    "id": "612",
+                    "category": "360-1"
+                    },
+                    {
+                    "id": "642",
+                    "category": "3d"
+                    },
+                    {
+                    "id": "105",
+                    "category": "60fps-1"
+                    },
+                    {
+                    "id": "252",
+                    "category": "amateur-gay"
+                    },
+                    {
+                    "id": "3",
+                    "category": "amateur"
+                    },
+                    {
+                    "id": "35",
+                    "category": "anal"
+                    }
+                }
+        """
 
         url = self.make_url('/categories')
         data = self.make_request(url)
         return data
 
     def tags(self, tags: List[str] = None):
-        """Get all tags"""
+        """Get all tags
+
+        Returns:
+            [type]: [description]
+
+        Example:
+            phb_api = phb.PornhubApi()
+            result = phb_api.tags()
+            # result ->>
+        
+        
+        """
 
         url = self.make_url('/tags')
         params = None
