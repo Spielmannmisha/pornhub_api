@@ -1,42 +1,49 @@
-
-# api_for_pornhub
+# PORNHUB_API_CLIENT
 Simple lib to work with pornhub api
 
-# Getting started
-You have to install this library from PYPI
-
-Use pip installer
-
+## Usage
 
 ### Installation
 
-This library doesn't require addiotional libraries except one's that provide cpython
+```
+pip install pornhub-api-client
+```
+
+### Importing
+
+```
+import pornhub.client
+
+phb_api = pornhub.client.PornhubApi()
+
+phb_api.search(query="anal") # Search over pornhub
+phb_api.stars() # Get all stars
+phb_api.stars_detailed() # Get all start
+phb_api.video_by_id(id=123) # Get all video by id
+phb_api.is_video_active(id=123) # Check if video is active or not
+phb_api.categories() # Returns all possible categories
+phb_api.tags(tags = "a") # Search over tags
+```
+
+## Development
+
+### Installation
 
 Install to your environment as shown above:
 
 ```
-pip install "api-for-pornhub"
+git clone https://github.com/SpielmannMisha/pornhub_api_client
 ```
 
-Import:
+Install dependencies required for development:
 
 ```
-import api_for_pornhub.src.api_for_pornhub"
+pip install -r requirements-dev.txt
 ```
 
+### Running the tests
 
-## Running the tests
-
-Description will be added later
-
-## Roadmap
-
+Run following command in pornhub_api_client directory:
 ```
-HTTP errors handler - 20.02.2021 - Postoned
-
-Automated tests - 25.02.2021 - Done
-
-Publishing and release - 28.02.2021 - Done
-
-to be continued
+pytest
 ```
