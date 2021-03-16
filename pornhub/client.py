@@ -1,3 +1,4 @@
+
 from typing import List
 from urllib.request import urlopen
 import urllib.parse
@@ -375,14 +376,51 @@ class PornhubApi:
         """Get all tags
 
         Returns:
-            [type]: [description]
+            json: returns json as searching result with parameters
 
         Example:
             phb_api = phb.PornhubApi()
-            result = phb_api.tags()
+            result = phb_api.tags(a)
             # result ->>
-        
-        
+            {
+                "warning": "We had to change the response structure due to high amount of tags. Please adjust your code",
+                "tagsCount": 322429,
+                "tags": [
+                    "a",
+                    "a 03 26",
+                    "a 04 01",
+                    "a 04 02",
+                    "a 04 03",
+                    "a 04 05",
+                    "a 04 07",
+                    "a 1",
+                    "a 1 2",
+                    "a 1 2 3",
+                    "a 1 amateur",
+                    "a 1 asmr",
+                    "a 1 blow job",
+                    "a 1 cocksukker 1",
+                    "a 1 cute",
+                    "a 1 fat wood",
+                    "a 1 head game",
+                    "a 1 pictures",
+                    "a 1 pussy",
+                    "a 10",
+                    "a 10 hr wank",
+                    "a 10 warthog",
+                    "a 100 bet to the",
+                    "a 1000 miles",
+                    "a 11",
+                    "a 1111",
+                    "a 12 pack of beer",
+                    "a 123",
+                    "a 1253c3c",
+                    "a 13 yrs old",
+                    "a 13 yry old",
+                    "a 18",
+                    "a 18 a",
+                    "a 18 anal"
+                    }
         """
 
         url = self.make_url('/tags')
