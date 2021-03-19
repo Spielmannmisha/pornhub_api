@@ -47,5 +47,5 @@ pip install -r requirements-dev.txt
 
 Run following command in pornhub_api_client directory:
 ```
-pytest
+python3 -m pytest
 ```
