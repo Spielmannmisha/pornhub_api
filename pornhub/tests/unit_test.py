@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
-
 import json
 import unittest
 from unittest.mock import patch, Mock
 from jsonschema import validate
-from src.api_for_pornhub import Api_for_pornhub
+from pornhub.client import PornhubApi
 import os  # used to open filename path
 
 
@@ -59,85 +57,85 @@ def get_schema_response(func_name):
 
 class TestGetData(unittest.TestCase):
 
-    @patch('src.api_for_pornhub.Api_for_pornhub.make_request')
+    @patch('pornhub.client.PornhubApi.make_request')
     def test_search(self, mock_search):
         schema, response = get_schema_response("search")
         mockfunc = Mock()
         mockfunc.urlopen.return_value = response
         mock_search.return_value = mockfunc.urlopen.return_value
-        resp = Api_for_pornhub()
+        resp = PornhubApi()
         resp = resp.search('sex')
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
         validate(resp, schema)
 
-    @patch('src.api_for_pornhub.Api_for_pornhub.make_request')
+    @patch('pornhub.client.PornhubApi.make_request')
     def test_stars(self, mock_stars):
         schema, response = get_schema_response("stars")
         mockfunc = Mock()
         mockfunc.urlopen.return_value = response
         mock_stars.return_value = mockfunc.urlopen.return_value
-        resp = Api_for_pornhub()
+        resp = PornhubApi()
         resp = resp.search()
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
         validate(resp, schema)
 
-    @patch('src.api_for_pornhub.Api_for_pornhub.make_request')
+    @patch('pornhub.client.PornhubApi.make_request')
     def test_stars_detailed(self, mock_stars_detailed):
         schema, response = get_schema_response("stars_detailed")
         mockfunc = Mock()
         mockfunc.urlopen.return_value = response
         mock_stars_detailed.return_value = mockfunc.urlopen.return_value
-        resp = Api_for_pornhub()
+        resp = PornhubApi()
         resp = resp.search()
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
         validate(resp, schema)
 
-    @patch('src.api_for_pornhub.Api_for_pornhub.make_request')
+    @patch('pornhub.client.PornhubApi.make_request')
     def test_video_by_id(self, mock_video_by_id):
         schema, response = get_schema_response("video_by_id")
         mockfunc = Mock()
         mockfunc.urlopen.return_value = response
         mock_video_by_id.return_value = mockfunc.urlopen.return_value
-        resp = Api_for_pornhub()
+        resp = PornhubApi()
         resp = resp.search()
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
         validate(resp, schema)
 
-    @patch('src.api_for_pornhub.Api_for_pornhub.make_request')
+    @patch('pornhub.client.PornhubApi.make_request')
     def test_is_video_active(self, mock_is_video_active):
         schema, response = get_schema_response("is_video_active")
         mockfunc = Mock()
         mockfunc.urlopen.return_value = response
         mock_is_video_active.return_value = mockfunc.urlopen.return_value
-        resp = Api_for_pornhub()
+        resp = PornhubApi()
         resp = resp.search()
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
         validate(resp, schema)
 
-    @patch('src.api_for_pornhub.Api_for_pornhub.make_request')
+    @patch('pornhub.client.PornhubApi.make_request')
     def test_categories(self, mock_categories):
         schema, response = get_schema_response("categories")
         mockfunc = Mock()
         mockfunc.urlopen.return_value = response
         mock_categories.return_value = mockfunc.urlopen.return_value
-        resp = Api_for_pornhub()
+        resp = PornhubApi()
         resp = resp.search()
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
         validate(resp, schema)
 
-    @patch('src.api_for_pornhub.Api_for_pornhub.make_request')
+    @patch('pornhub.client.PornhubApi.make_request')
     def test_tags(self, mock_tags):
         schema, response = get_schema_response("tags")
         mockfunc = Mock()
         mockfunc.urlopen.return_value = response
         mock_tags.return_value = mockfunc.urlopen.return_value
-        resp = Api_for_pornhub()
+        resp = PornhubApi()
         resp = resp.search()
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
