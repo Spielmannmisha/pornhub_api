@@ -1,5 +1,7 @@
 [![UnitTest](https://github.com/Spielmannmisha/pornhub_api_client/actions/workflows/unit_test.yml/badge.svg)](https://github.com/Spielmannmisha/pornhub_api_client/actions/workflows/unit_test.yml)
 
+[![Linting](https://github.com/Spielmannmisha/pornhub_api_client/actions/workflows/linter.yml/badge.svg)](https://github.com/Spielmannmisha/pornhub_api_client/actions/workflows/linter.yml)
+
 # PORNHUB_API_CLIENT
 Simple lib to work with pornhub api
 
