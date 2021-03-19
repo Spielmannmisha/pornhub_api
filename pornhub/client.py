@@ -47,7 +47,7 @@ class PornhubApi:
         phrase: List[str] = None,
         tags: List[str] = None,
         period=None
-            ):
+    ):
         """Start searching with parameters
 
         Args:

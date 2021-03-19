@@ -33,5 +33,5 @@ jobs:
         
     - name: Test with flake8
       run: |
-        python3 -m flake8 pornhub
+        python3 -m flake8 --ignore=E501 pornhub
         
