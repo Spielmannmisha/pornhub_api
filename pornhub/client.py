@@ -1,8 +1,6 @@
-
 from typing import List
-from urllib.request import urlopen
-import urllib.parse
 import json
+import requests
 
 
 class PornhubApi:
@@ -18,7 +16,7 @@ class PornhubApi:
         """Concate base url with string from specific method"""
         return f"{self.URL}{path}"
 
-    def make_request(self, url, params=None):
+    def make_request(self, url, params=None) -> json:
         """this function makes api request to pornhub
 
         Args:
@@ -26,28 +24,22 @@ class PornhubApi:
             params (List, optional): search parameters. Defaults to None.
 
         Returns:
-            json: returns json that depends on parameters
+            json: returns json answer from pronhub
         """
-
-        if params is not None:
-            # Convert [params] dictionary to http query
-            params = urllib.parse.urlencode(params)
-            url = f"{url}?{params}"
-        data = urlopen(url).read()  # Opens url via urllib.request library
-        data = json.loads(data)  # Decoding json to a Python object [data]
-        return data
+        r = requests.get(url, params=params)
+        return r.content
 
     def search(
         self,
-        query='',
-        thumbsize='small',
+        query="",
+        thumbsize="small",
         category=None,
         page=1,
         ordering=None,
         phrase: List[str] = None,
         tags: List[str] = None,
-        period=None
-    ):
+        period=None,
+    ) -> list:
         """Start searching with parameters
 
         Args:
@@ -116,22 +108,25 @@ class PornhubApi:
                 }
         """
 
-        url = self.make_url('/search')
-        params = {'search': query, 'page': page, 'thumbsize': thumbsize}
+        url = self.make_url("/search")
+        params = {"search": query, "page": page, "thumbsize": thumbsize}
         if category is not None:
-            params['category'] = category
+            params["category"] = category
         if ordering is not None:
-            params['ordering'] = ordering
+            params["ordering"] = ordering
         if phrase is not None:
-            params['phrase'] = ','.join(phrase)
+            params["phrase[]"] = ",".join(phrase)
         if tags is not None:
-            params['tags'] = ','.join(tags)
+            params["tags[]"] = ",".join(tags)
         if period is not None and category is not None:
-            params['period'] = period
-        data = self.make_request(url, params)
-        return data
+            params["period"] = period
 
-    def stars(self):
+        data = self.make_request(url, params)
+        video_data = json.loads(data)["videos"]
+
+        return video_data
+
+    def stars(self) -> list:
         """Get short pornstars list
 
         Returns:
@@ -182,11 +177,13 @@ class PornhubApi:
             }
         """
 
-        url = self.make_url('/stars')
+        url = self.make_url("/stars")
         data = self.make_request(url)
-        return data
 
-    def stars_detailed(self):
+        stars_data = json.loads(data)["stars"]
+        return stars_data
+
+    def stars_detailed(self) -> list:
         """Get detailed pornstars list
 
         Returns:
@@ -237,11 +234,13 @@ class PornhubApi:
             }
         """
 
-        url = self.make_url('/stars_detailed')
+        url = self.make_url("/stars_detailed")
         data = self.make_request(url)
-        return data
 
-    def video_by_id(self, id):
+        stars_detailed_data = json.loads(data)["stars"]
+        return stars_detailed_data
+
+    def video_by_id(self, id) -> dict:
         """Get video id
 
         Returns:
@@ -249,7 +248,7 @@ class PornhubApi:
 
         Example:
             phb_api = phb.PornhubApi()
-            result = phb_api.vide_by_id('ph5fa1aad36d297')
+            result = phb_api.video_by_id('ph5fa1aad36d297')
             # result ->>
             {
                 "video": {
@@ -293,12 +292,14 @@ class PornhubApi:
             }
         """
 
-        url = self.make_url('/video_by_id?id=')
-        params = {'id': id}
+        url = self.make_url("/video_by_id?id=")
+        params = {"id": id}
         data = self.make_request(url, params)
-        return data
+        video_by_id_data = json.loads(data)["video"]
 
-    def is_video_active(self, id):
+        return video_by_id_data
+
+    def is_video_active(self, id) -> dict:
         """Check if video is active
 
         Returns:
@@ -316,12 +317,14 @@ class PornhubApi:
             }
         """
 
-        url = self.make_url('/is_video_active?id=')
-        params = {'id': id}
+        url = self.make_url("/is_video_active?id=")
+        params = {"id": id}
         data = self.make_request(url, params)
-        return data
+        video_active_data = json.loads(data)["active"]
 
-    def categories(self):
+        return video_active_data
+
+    def categories(self) -> list:
         """Get all possible categories
 
         Returns:
@@ -368,9 +371,11 @@ class PornhubApi:
                 }
         """
 
-        url = self.make_url('/categories')
+        url = self.make_url("/categories")
         data = self.make_request(url)
-        return data
+        categories_data = json.loads(data)["categories"]
+
+        return categories_data
 
     def tags(self, tags: List[str] = None):
         """Get all tags
@@ -423,9 +428,11 @@ class PornhubApi:
                     }
         """
 
-        url = self.make_url('/tags')
+        url = self.make_url("/tags")
         params = None
         if tags is not None:
-            params['tags'] = ','.join(tags)
+            params["tags[]"] = ",".join(tags)
         data = self.make_request(url, params)
-        return data
+        tags_data = json.loads(data)["tags"]
+
+        return tags_data
