@@ -45,7 +45,7 @@ jobs:
           
       - name: Install and set up pornhub_api_client
         run: |
-          git clone -b dev https://github.com/Spielmannmisha/pornhub_api_client.git
+          git clone https://github.com/Spielmannmisha/pornhub_api_client.git
                
       - name: Publish to PyPI
         env:
