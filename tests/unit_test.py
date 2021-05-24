@@ -1,9 +1,8 @@
 import json
 import unittest
 from unittest.mock import patch, Mock
-from jsonschema import validate
 from pornhub.client import PornhubApi
-import os  # used to open filename path
+import os
 
 
 def get_schema_response(func_name):
@@ -56,95 +55,108 @@ def get_schema_response(func_name):
 
 
 class TestGetData(unittest.TestCase):
-
-    @patch('pornhub.client.PornhubApi.make_request')
+    @patch("pornhub.client.PornhubApi.make_request")
     def test_search(self, mock_search):
         schema, response = get_schema_response("search")
+        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.urlopen.return_value = response
-        mock_search.return_value = mockfunc.urlopen.return_value
-        resp = PornhubApi()
-        resp = resp.search('sex')
-        self.assertIsInstance(resp, dict)
-        self.assertTrue(resp)
-        validate(resp, schema)
+        mockfunc.r.content.return_value = response
+        mock_search.return_value = mockfunc.r.content.return_value
 
-    @patch('pornhub.client.PornhubApi.make_request')
+        resp = PornhubApi()
+        resp = resp.search("sex")
+        self.assertIsInstance(resp, list)
+        self.assertTrue(resp)
+        self.assertEqual(resp, schema)
+
+    @patch("pornhub.client.PornhubApi.make_request")
     def test_stars(self, mock_stars):
         schema, response = get_schema_response("stars")
+        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.urlopen.return_value = response
-        mock_stars.return_value = mockfunc.urlopen.return_value
-        resp = PornhubApi()
-        resp = resp.search()
-        self.assertIsInstance(resp, dict)
-        self.assertTrue(resp)
-        validate(resp, schema)
+        mockfunc.r.content.return_value = response
+        mock_stars.return_value = mockfunc.r.content.return_value
 
-    @patch('pornhub.client.PornhubApi.make_request')
+        resp = PornhubApi()
+        resp = resp.stars()
+        self.assertIsInstance(resp, list)
+        self.assertTrue(resp)
+        self.assertEqual(resp, schema)
+
+    @patch("pornhub.client.PornhubApi.make_request")
     def test_stars_detailed(self, mock_stars_detailed):
         schema, response = get_schema_response("stars_detailed")
+        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.urlopen.return_value = response
-        mock_stars_detailed.return_value = mockfunc.urlopen.return_value
-        resp = PornhubApi()
-        resp = resp.search()
-        self.assertIsInstance(resp, dict)
-        self.assertTrue(resp)
-        validate(resp, schema)
+        mockfunc.r.content.return_value = response
+        mock_stars_detailed.return_value = mockfunc.r.content.return_value
 
-    @patch('pornhub.client.PornhubApi.make_request')
+        resp = PornhubApi()
+        resp = resp.stars_detailed()
+        self.assertIsInstance(resp, list)
+        self.assertTrue(resp)
+        self.assertEqual(resp, schema)
+
+    @patch("pornhub.client.PornhubApi.make_request")
     def test_video_by_id(self, mock_video_by_id):
         schema, response = get_schema_response("video_by_id")
+        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.urlopen.return_value = response
-        mock_video_by_id.return_value = mockfunc.urlopen.return_value
+        mockfunc.r.content.return_value = response
+        mock_video_by_id.return_value = mockfunc.r.content.return_value
+
         resp = PornhubApi()
-        resp = resp.search()
+        resp = resp.video_by_id(id="id123445")
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
-        validate(resp, schema)
+        self.assertEqual(resp, schema)
 
-    @patch('pornhub.client.PornhubApi.make_request')
+    @patch("pornhub.client.PornhubApi.make_request")
     def test_is_video_active(self, mock_is_video_active):
         schema, response = get_schema_response("is_video_active")
+        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.urlopen.return_value = response
-        mock_is_video_active.return_value = mockfunc.urlopen.return_value
+        mockfunc.r.content.return_value = response
+        mock_is_video_active.return_value = mockfunc.r.content.return_value
+
         resp = PornhubApi()
-        resp = resp.search()
+        resp = resp.is_video_active(id="id12344")
         self.assertIsInstance(resp, dict)
         self.assertTrue(resp)
-        validate(resp, schema)
+        self.assertEqual(resp, schema)
 
-    @patch('pornhub.client.PornhubApi.make_request')
+    @patch("pornhub.client.PornhubApi.make_request")
     def test_categories(self, mock_categories):
         schema, response = get_schema_response("categories")
+        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.urlopen.return_value = response
-        mock_categories.return_value = mockfunc.urlopen.return_value
-        resp = PornhubApi()
-        resp = resp.search()
-        self.assertIsInstance(resp, dict)
-        self.assertTrue(resp)
-        validate(resp, schema)
+        mockfunc.r.content.return_value = response
+        mock_categories.return_value = mockfunc.r.content.return_value
 
-    @patch('pornhub.client.PornhubApi.make_request')
+        resp = PornhubApi()
+        resp = resp.categories()
+        self.assertIsInstance(resp, list)
+        self.assertTrue(resp)
+        self.assertEqual(resp, schema)
+
+    @patch("pornhub.client.PornhubApi.make_request")
     def test_tags(self, mock_tags):
         schema, response = get_schema_response("tags")
+        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.urlopen.return_value = response
-        mock_tags.return_value = mockfunc.urlopen.return_value
+        mockfunc.r.content.return_value = response
+        mock_tags.return_value = mockfunc.r.content.return_value
+
         resp = PornhubApi()
-        resp = resp.search()
-        self.assertIsInstance(resp, dict)
+        resp = resp.tags()
+        self.assertIsInstance(resp, list)
         self.assertTrue(resp)
-        validate(resp, schema)
+        self.assertEqual(resp, schema)
 
 
 def main():
     unittest.main()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
