@@ -25,7 +25,6 @@ jobs:
       - name: Install Poetry
         run: |
           pip install poetry
-          python get-poetry.py --preview -y
           
       - name: Build distributions
         run: |
