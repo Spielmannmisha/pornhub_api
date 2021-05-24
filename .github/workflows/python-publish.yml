@@ -24,7 +24,7 @@ jobs:
 
       - name: Install Poetry
         run: |
-          curl -O -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+          pip install poetry
           python get-poetry.py --preview -y
           
       - name: Build distributions
