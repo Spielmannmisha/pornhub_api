@@ -59,53 +59,50 @@ class PornhubApi:
             phb_api = phb.PornhubApi()
             result = phb_api.search(query='straight')
             # result ->>
-                {
-                    "videos": [
+                    {
+                    "duration": "11:50",
+                    "views": 587,
+                    "video_id": "ph5fa1aad36d297",
+                    "rating": "100",
+                    "ratings": 2,
+                    "title": "Fill my mouth with your cum ",
+                    "url": "https://www.pornhub.com/view_video.php?viewkey=ph5fa1aad36d297",
+                    "default_thumb": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)12.jpg",
+                    "thumb": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)7.jpg",
+                    "publish_date": "2021-03-15 18:07:03",
+                    "thumbs": [
                         {
-                        "duration": "11:50",
-                        "views": 587,
-                        "video_id": "ph5fa1aad36d297",
-                        "rating": "100",
-                        "ratings": 2,
-                        "title": "Fill my mouth with your cum ",
-                        "url": "https://www.pornhub.com/view_video.php?viewkey=ph5fa1aad36d297",
-                        "default_thumb": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)12.jpg",
-                        "thumb": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)7.jpg",
-                        "publish_date": "2021-03-15 18:07:03",
-                        "thumbs": [
-                            {
-                            "size": "320x240",
-                            "width": "320",
-                            "height": "240",
-                            "src": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)1.jpg"
-                            },
-                            {
-                            "size": "320x240",
-                            "width": "320",
-                            "height": "240",
-                            "src": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)2.jpg"
-                            }
-                        ],
-                        "tags": [
-                            {
-                            "tag_name": "cum swallow"
-                            },
-                            {
-                            "tag_name": "swallow"
-                            }
-                        ],
-                        "pornstars": [],
-                        "categories": [
-                            {
-                            "category": "amateur"
-                            },
-                            {
-                            "category": "big-tits"
-                            }
-                        ],
-                        "segment": "straight"
+                        "size": "320x240",
+                        "width": "320",
+                        "height": "240",
+                        "src": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)1.jpg"
+                        },
+                        {
+                        "size": "320x240",
+                        "width": "320",
+                        "height": "240",
+                        "src": "https://di.phncdn.com/videos/202011/03/366620472/original/(m=eaf8Ggaaaa)(mh=rFCACw3dUGSHJSbA)2.jpg"
                         }
-                }
+                    ],
+                    "tags": [
+                        {
+                        "tag_name": "cum swallow"
+                        },
+                        {
+                        "tag_name": "swallow"
+                        }
+                    ],
+                    "pornstars": [],
+                    "categories": [
+                        {
+                        "category": "amateur"
+                        },
+                        {
+                        "category": "big-tits"
+                        }
+                    ],
+                    "segment": "straight"
+                    }
         """
 
         url = self.make_url("/search")
@@ -137,9 +134,7 @@ class PornhubApi:
             phb_api = phb.PornhubApi()
             result = phb_api.stars()
             # result ->>
-            {
-                "stars": [
-                    {
+                {
                     "star": {
                         "star_name": "033120 mpp2"
                     }
@@ -174,7 +169,7 @@ class PornhubApi:
                         "star_name": "29EXP"
                     }
                 }
-            }
+
         """
 
         url = self.make_url("/stars")
@@ -193,9 +188,7 @@ class PornhubApi:
             phb_api = phb.PornhubApi()
             result = phb_api.stars_detailed()
             # result ->>
-            {
-                "stars": [
-                    {
+                {
                     "star": {
                         "star_name": " Melisa Wide",
                         "star_thumb": "https://di.phncdn.com/pics/pornstars/default/(m=lciuhScOb_c)(mh=MIYb3JZmqOmG07hE)female.jpg",
@@ -230,8 +223,8 @@ class PornhubApi:
                         "gender": "male",
                         "videos_count_all": "0"
                     }
-                    }
-            }
+                }
+
         """
 
         url = self.make_url("/stars_detailed")
@@ -250,8 +243,7 @@ class PornhubApi:
             phb_api = phb.PornhubApi()
             result = phb_api.video_by_id('ph5fa1aad36d297')
             # result ->>
-            {
-                "video": {
+                {
                     "duration": "11:50",
                     "views": 71,
                     "video_id": "ph5fa1aad36d297",
@@ -289,7 +281,6 @@ class PornhubApi:
                     ],
                     "segment": "straight"
                 }
-            }
         """
 
         url = self.make_url("/video_by_id?id=")
@@ -309,12 +300,10 @@ class PornhubApi:
             phb_api = phb.PornhubApi()
             result = phb_api.is_video_active('ph5fa1aad36d297')
             # result ->>
-            {
-                "active": {
+                {
                     "video_id": "ph5fa1aad36d297",
                     "is_active": "1"
                 }
-            }
         """
 
         url = self.make_url("/is_video_active?id=")
@@ -334,9 +323,7 @@ class PornhubApi:
             phb_api = phb.PornhubApi()
             result = phb_api.categories()
             # result ->>
-            {
-                "categories": [
-                    {
+                {
                     "id": "622",
                     "category": "180-1"
                     },
@@ -368,7 +355,6 @@ class PornhubApi:
                     "id": "35",
                     "category": "anal"
                     }
-                }
         """
 
         url = self.make_url("/categories")
