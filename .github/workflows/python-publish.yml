@@ -20,11 +20,12 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
-          python-version: 3.8
+          python-version: 3.9
 
       - name: Install Poetry
         run: |
-          pip install poetry
+          curl -O -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+          python get-poetry.py --preview -y
           
       - name: Build distributions
         run: |
