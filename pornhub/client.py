@@ -1,6 +1,9 @@
 from typing import List
 import json
 import requests
+import logging
+
+logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 
 
 class PornhubApi:
@@ -26,7 +29,13 @@ class PornhubApi:
         Returns:
             json: returns json answer from pronhub
         """
-        r = requests.get(url, params=params)
+
+        try:
+            r = requests.get(url, params=params)
+        except requests.exceptions.ConnectionError as error:
+            logging.warning(f'{error}')
+            return None
+
         return r.content
 
     def search(
@@ -119,9 +128,11 @@ class PornhubApi:
             params["period"] = period
 
         data = self.make_request(url, params)
-        video_data = json.loads(data)["videos"]
 
-        return video_data
+        if data:
+            video_data = json.loads(data)["videos"]
+            return video_data
+        return None
 
     def stars(self) -> list:
         """Get short pornstars list
