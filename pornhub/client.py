@@ -34,11 +34,14 @@ class PornhubApi:
         try:
             response = requests.get(url, params=params)
             response = response.json()
+            check_response(response)
+
         except requests.exceptions.ConnectionError as error:
             logging.warning(f'{error}')
             return None
-
-        check_response(response)
+        except ValueError as val_error:
+            logging.warning(f'{val_error}')
+            return None
 
         return response
 
@@ -134,7 +137,6 @@ class PornhubApi:
         data = self.make_request(url, params)
 
         if data:
-            #video_data = json.loads(data)["videos"]
             video_data = data["videos"]
             return video_data
         return None
