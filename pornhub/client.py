@@ -250,8 +250,11 @@ class PornhubApi:
         url = self.make_url("/stars_detailed")
         data = self.make_request(url)
 
-        stars_detailed_data = json.loads(data)["stars"]
-        return stars_detailed_data
+        if data:
+            stars_detailed_data = data["stars"]
+            return stars_detailed_data
+        return None
+
 
     def video_by_id(self, id) -> dict:
         """Get video id
