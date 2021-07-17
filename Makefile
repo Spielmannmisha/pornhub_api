@@ -1,5 +1,5 @@
 test:
-	poetry run test-script
+	poetry3 -m pytest
 
 build:
 	poetry build

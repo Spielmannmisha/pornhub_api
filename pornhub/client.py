@@ -1,6 +1,10 @@
 from typing import List
 import json
 import requests
+import logging
+from pornhub.response_codes import check_response
+
+logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 
 
 class PornhubApi:
@@ -26,8 +30,20 @@ class PornhubApi:
         Returns:
             json: returns json answer from pronhub
         """
-        r = requests.get(url, params=params)
-        return r.content
+
+        try:
+            response = requests.get(url, params=params)
+            response = response.json()
+            check_response(response)
+
+        except requests.exceptions.ConnectionError as error:
+            logging.warning(f'{error}')
+            return None
+        except ValueError as val_error:
+            logging.warning(f'{val_error}')
+            return None
+
+        return response
 
     def search(
         self,
@@ -119,9 +135,11 @@ class PornhubApi:
             params["period"] = period
 
         data = self.make_request(url, params)
-        video_data = json.loads(data)["videos"]
 
-        return video_data
+        if data:
+            video_data = data["videos"]
+            return video_data
+        return None
 
     def stars(self) -> list:
         """Get short pornstars list
@@ -175,8 +193,10 @@ class PornhubApi:
         url = self.make_url("/stars")
         data = self.make_request(url)
 
-        stars_data = json.loads(data)["stars"]
-        return stars_data
+        if data:
+            stars_data = data["stars"]
+            return stars_data
+        return None
 
     def stars_detailed(self) -> list:
         """Get detailed pornstars list
@@ -230,8 +250,10 @@ class PornhubApi:
         url = self.make_url("/stars_detailed")
         data = self.make_request(url)
 
-        stars_detailed_data = json.loads(data)["stars"]
-        return stars_detailed_data
+        if data:
+            stars_detailed_data = data["stars"]
+            return stars_detailed_data
+        return None
 
     def video_by_id(self, id) -> dict:
         """Get video id
@@ -286,9 +308,11 @@ class PornhubApi:
         url = self.make_url("/video_by_id?id=")
         params = {"id": id}
         data = self.make_request(url, params)
-        video_by_id_data = json.loads(data)["video"]
 
-        return video_by_id_data
+        if data:
+            video_by_id_data = data["video"]
+            return video_by_id_data
+        return None
 
     def is_video_active(self, id) -> dict:
         """Check if video is active
@@ -309,9 +333,11 @@ class PornhubApi:
         url = self.make_url("/is_video_active?id=")
         params = {"id": id}
         data = self.make_request(url, params)
-        video_active_data = json.loads(data)["active"]
 
-        return video_active_data
+        if data:
+            video_active_data = data["active"]
+            return video_active_data
+        return None
 
     def categories(self) -> list:
         """Get all possible categories
@@ -359,9 +385,11 @@ class PornhubApi:
 
         url = self.make_url("/categories")
         data = self.make_request(url)
-        categories_data = json.loads(data)["categories"]
 
-        return categories_data
+        if data:
+            categories_data = data["categories"]
+            return categories_data
+        return None
 
     def tags(self, tags: List[str] = None):
         """Get all tags
@@ -419,6 +447,8 @@ class PornhubApi:
         if tags is not None:
             params["tags[]"] = ",".join(tags)
         data = self.make_request(url, params)
-        tags_data = json.loads(data)["tags"]
 
-        return tags_data
+        if data:
+            tags_data = data["tags"]
+            return tags_data
+        return None
