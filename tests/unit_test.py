@@ -123,10 +123,9 @@ class TestGetData(unittest.TestCase):
     @patch("pornhub.client.PornhubApi.make_request")
     def test_categories(self, mock_categories):
         schema, response = get_schema_response("categories")
-        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.r.content.return_value = response
-        mock_categories.return_value = mockfunc.r.content.return_value
+        mockfunc.response.return_value = response
+        mock_categories.return_value = mockfunc.response.return_value
 
         resp = PornhubApi()
         resp = resp.categories()

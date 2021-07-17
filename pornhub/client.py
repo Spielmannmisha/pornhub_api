@@ -385,9 +385,11 @@ class PornhubApi:
 
         url = self.make_url("/categories")
         data = self.make_request(url)
-        categories_data = json.loads(data)["categories"]
 
-        return categories_data
+        if data:
+            categories_data = data["categories"]
+            return categories_data
+        return None
 
     def tags(self, tags: List[str] = None):
         """Get all tags
