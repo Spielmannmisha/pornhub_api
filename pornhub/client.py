@@ -32,14 +32,15 @@ class PornhubApi:
         """
 
         try:
-            r = requests.get(url, params=params)
+            response = requests.get(url, params=params)
+            response = response.json()
         except requests.exceptions.ConnectionError as error:
             logging.warning(f'{error}')
             return None
 
-        check_response(r)
+        check_response(response)
 
-        return r.json()
+        return response
 
     def search(
         self,
