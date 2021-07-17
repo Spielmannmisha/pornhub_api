@@ -2,6 +2,7 @@ from typing import List
 import json
 import requests
 import logging
+from pornhub.response_codes import check_response
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 
@@ -36,7 +37,9 @@ class PornhubApi:
             logging.warning(f'{error}')
             return None
 
-        return r.content
+        check_response(r)
+
+        return r.json()
 
     def search(
         self,
@@ -130,7 +133,8 @@ class PornhubApi:
         data = self.make_request(url, params)
 
         if data:
-            video_data = json.loads(data)["videos"]
+            #video_data = json.loads(data)["videos"]
+            video_data = data["videos"]
             return video_data
         return None
 
