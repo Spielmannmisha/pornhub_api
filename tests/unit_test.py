@@ -97,10 +97,9 @@ class TestGetData(unittest.TestCase):
     @patch("pornhub.client.PornhubApi.make_request")
     def test_video_by_id(self, mock_video_by_id):
         schema, response = get_schema_response("video_by_id")
-        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.r.content.return_value = response
-        mock_video_by_id.return_value = mockfunc.r.content.return_value
+        mockfunc.response.return_value = response
+        mock_video_by_id.return_value = mockfunc.response.return_value
 
         resp = PornhubApi()
         resp = resp.video_by_id(id="id123445")
@@ -111,10 +110,9 @@ class TestGetData(unittest.TestCase):
     @patch("pornhub.client.PornhubApi.make_request")
     def test_is_video_active(self, mock_is_video_active):
         schema, response = get_schema_response("is_video_active")
-        response = json.dumps(response)
         mockfunc = Mock()
-        mockfunc.r.content.return_value = response
-        mock_is_video_active.return_value = mockfunc.r.content.return_value
+        mockfunc.response.return_value = response
+        mock_is_video_active.return_value = mockfunc.response.return_value
 
         resp = PornhubApi()
         resp = resp.is_video_active(id="id12344")

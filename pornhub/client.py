@@ -255,7 +255,6 @@ class PornhubApi:
             return stars_detailed_data
         return None
 
-
     def video_by_id(self, id) -> dict:
         """Get video id
 
@@ -309,9 +308,11 @@ class PornhubApi:
         url = self.make_url("/video_by_id?id=")
         params = {"id": id}
         data = self.make_request(url, params)
-        video_by_id_data = json.loads(data)["video"]
 
-        return video_by_id_data
+        if data:
+            video_by_id_data = data["video"]
+            return video_by_id_data
+        return None
 
     def is_video_active(self, id) -> dict:
         """Check if video is active
@@ -332,9 +333,11 @@ class PornhubApi:
         url = self.make_url("/is_video_active?id=")
         params = {"id": id}
         data = self.make_request(url, params)
-        video_active_data = json.loads(data)["active"]
 
-        return video_active_data
+        if data:
+            video_active_data = data["active"]
+            return video_active_data
+        return None
 
     def categories(self) -> list:
         """Get all possible categories
