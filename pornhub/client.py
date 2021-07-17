@@ -447,6 +447,8 @@ class PornhubApi:
         if tags is not None:
             params["tags[]"] = ",".join(tags)
         data = self.make_request(url, params)
-        tags_data = json.loads(data)["tags"]
 
-        return tags_data
+        if data:
+            tags_data = data["tags"]
+            return tags_data
+        return None
