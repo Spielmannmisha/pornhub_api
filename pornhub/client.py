@@ -193,8 +193,10 @@ class PornhubApi:
         url = self.make_url("/stars")
         data = self.make_request(url)
 
-        stars_data = json.loads(data)["stars"]
-        return stars_data
+        if data:
+            stars_data = data["stars"]
+            return stars_data
+        return None
 
     def stars_detailed(self) -> list:
         """Get detailed pornstars list
